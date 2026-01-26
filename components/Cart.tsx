@@ -28,7 +28,7 @@ export default function Cart({ cart, isOpen, onClose, updateQuantity }: CartProp
       return;
     }
 
-    let message = "Hola Saian Sushi! 🍣 Quiero pedir:\n\n";
+    let message = "Hola Saian Sushi! Quiero pedir:\n\n";
 
     cart.forEach((item) => {
       message += `- ${item.quantity}x ${item.name}`;
