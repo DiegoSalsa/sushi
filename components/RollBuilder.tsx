@@ -127,7 +127,7 @@ export default function RollBuilder({ item, isOpen, onClose, onAddToCart }: Roll
                   <span className="bg-neon text-black w-5 h-5 rounded-full flex items-center justify-center mr-2 text-xs font-bold">
                     2
                   </span>
-                  Vegetales (máx 2)
+                  Vegetales (max 2)
                 </h3>
                 <div className="grid grid-cols-2 gap-2">
                   {VEGGIES.map((veggie) => (

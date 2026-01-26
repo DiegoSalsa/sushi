@@ -45,11 +45,11 @@ export default function Cart({ cart, isOpen, onClose, updateQuantity }: CartProp
     message += `Total: $${total.toLocaleString("es-CL")}\n\n`;
     message += `Datos:\n`;
     message += `Nombre: ${name}\n`;
-    message += `Dirección: ${address}\n`;
-    message += `Teléfono: ${phone}`;
+    message += `Direccion: ${address}\n`;
+    message += `Telefono: ${phone}`;
 
     const encodedMessage = encodeURIComponent(message);
-    const whatsappUrl = `https://wa.me/56912345678?text=${encodedMessage}`;
+    const whatsappUrl = `https://wa.me/56930528030?text=${encodedMessage}`;
     
     window.open(whatsappUrl, "_blank");
   };
@@ -92,7 +92,7 @@ export default function Cart({ cart, isOpen, onClose, updateQuantity }: CartProp
             <div className="flex-1 overflow-y-auto p-6">
               {cart.length === 0 ? (
                 <div className="text-center text-gray-400 py-12">
-                  <p>Tu carrito está vacío</p>
+                  <p>Tu carrito esta vacio</p>
                 </div>
               ) : (
                 <div className="space-y-4 mb-6">
