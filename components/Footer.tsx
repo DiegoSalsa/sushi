@@ -35,9 +35,9 @@ export default function Footer() {
               <div className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-neon flex-shrink-0 mt-1" />
                 <div>
-                  <p className="text-gray-300 font-semibold">Ubicacion</p>
+                  <p className="text-gray-300 font-semibold">Ubicación</p>
                   <p className="text-gray-400 text-sm">
-                    Los Castanos 31 - Esq. Alto Horno<br />
+                    Los Castaños 31 - Esq. Alto Horno<br />
                     Higueras, Talcahuano
                   </p>
                 </div>
@@ -77,7 +77,7 @@ export default function Footer() {
 
           {/* Google Maps */}
           <div className="lg:col-span-1">
-            <h4 className="text-xl font-bold text-white mb-4">Encuentranos</h4>
+            <h4 className="text-xl font-bold text-white mb-4">Encuéntranos</h4>
             <div className="rounded-xl overflow-hidden border-2 border-zinc-800 h-64">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3176.892822344056!2d-73.12124292346468!3d-36.74938917996935!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9669b6da7f777777%3A0x888888888888888!2sLos%20Casta%C3%B1os%2031%2C%20Talcahuano%2C%20B%C3%ADo%20B%C3%ADo!5e0!3m2!1ses!2scl!4v1234567890"
@@ -135,7 +135,7 @@ export default function Footer() {
               rel="noopener noreferrer"
               className="inline-block mt-3 text-sm text-gray-400 hover:text-neon transition-colors"
             >
-              Ver mas resenas en Google →
+              Ver más reseñas en Google →
             </a>
           </div>
         </div>
