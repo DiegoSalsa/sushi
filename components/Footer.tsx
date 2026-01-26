@@ -5,19 +5,19 @@ import { MapPin, Clock, Phone, Star } from "lucide-react";
 
 const REVIEWS = [
   {
-    name: "Juan Pérez",
+    name: "Cliente Satisfecho",
     rating: 5,
     text: "¡Excelente sushi! Los rolls son frescos y el sabor es increíble. Muy recomendado.",
   },
   {
-    name: "María González",
+    name: "Usuario Demo",
     rating: 5,
-    text: "El mejor sushi de Talcahuano sin duda. Rápida entrega y todo delicioso.",
+    text: "El mejor sushi sin duda. Rápida entrega y todo delicioso.",
   },
   {
-    name: "Carlos Muñoz",
+    name: "Cliente Feliz",
     rating: 5,
-    text: "Calidad premium a buen precio. El Roll Acevichado es espectacular.",
+    text: "Calidad premium a buen precio. Siempre vuelvo a pedir.",
   },
 ];
 
@@ -29,7 +29,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
           {/* Info Section */}
           <div>
-            <h3 className="text-2xl font-bold text-neon mb-6">Saian Sushi</h3>
+            <h3 className="text-2xl font-bold text-neon mb-6">Sushi Demo</h3>
             
             <div className="space-y-4">
               <div className="flex items-start gap-3">
@@ -37,8 +37,8 @@ export default function Footer() {
                 <div>
                   <p className="text-gray-300 font-semibold">Ubicación</p>
                   <p className="text-gray-400 text-sm">
-                    Los Castaños 31 - Esq. Alto Horno<br />
-                    Higueras, Talcahuano
+                    Tu Dirección Aquí<br />
+                    Tu Ciudad
                   </p>
                 </div>
               </div>
@@ -48,11 +48,11 @@ export default function Footer() {
                 <div>
                   <p className="text-gray-300 font-semibold">Horarios</p>
                   <p className="text-gray-400 text-sm">
-                    Lunes a Sábado<br />
-                    12:00 - 23:30 hrs
+                    Lunes a Domingo<br />
+                    12:00 - 23:00 hrs
                   </p>
-                  <p className="text-red-400 text-sm font-bold mt-1">
-                    Domingo CERRADO
+                  <p className="text-gray-500 text-xs mt-1">
+                    Consulta disponibilidad
                   </p>
                 </div>
               </div>
@@ -62,12 +62,12 @@ export default function Footer() {
                 <div>
                   <p className="text-gray-300 font-semibold">Pedidos</p>
                   <a 
-                    href="https://wa.me/56930528030" 
+                    href="https://wa.me/56912345678" 
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-green-400 hover:text-green-300 text-sm font-mono transition-colors"
                   >
-                    +56 9 3052 8030
+                    +56 9 1234 5678
                   </a>
                   <p className="text-gray-500 text-xs mt-1">Delivery: $1.000</p>
                 </div>
@@ -87,11 +87,11 @@ export default function Footer() {
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="Ubicación Saian Sushi"
+                title="Ubicación Demo"
               />
             </div>
             <a
-              href="https://maps.app.goo.gl/N3ApbHgBPMZdFuwV6"
+              href="https://maps.google.com"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block mt-3 text-neon hover:text-orange-600 text-sm font-semibold transition-colors"
@@ -144,13 +144,11 @@ export default function Footer() {
         <div className="border-t border-zinc-800 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-gray-500 text-sm">
-              © 2026 Saian Sushi Talcahuano. Todos los derechos reservados.
+              © 2026 Sushi Demo. Todos los derechos reservados.
             </p>
             <div className="flex items-center gap-4">
               <a
-                href="https://www.instagram.com/saian.sushi.talcahuano/"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="#"
                 className="text-gray-400 hover:text-neon transition-colors"
               >
                 <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -158,9 +156,7 @@ export default function Footer() {
                 </svg>
               </a>
               <a
-                href="https://www.facebook.com/saian.sushi.talcahuano"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="#"
                 className="text-gray-400 hover:text-neon transition-colors"
               >
                 <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">

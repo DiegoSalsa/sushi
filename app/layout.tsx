@@ -5,7 +5,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Saian Sushi - El Mejor Sushi de Talcahuano",
+  title: "Sushi Demo - Landing Page Premium",
   description: "Pide el mejor sushi de Talcahuano directo a tu casa. Personaliza tu roll y recíbelo en minutos.",
 };
 

@@ -28,7 +28,7 @@ export default function Cart({ cart, isOpen, onClose, updateQuantity }: CartProp
       return;
     }
 
-    let message = "Hola Saian Sushi! Quiero pedir:\n\n";
+    let message = "Hola! Quiero pedir:\n\n";
 
     cart.forEach((item) => {
       message += `- ${item.quantity}x ${item.name}`;
@@ -49,7 +49,7 @@ export default function Cart({ cart, isOpen, onClose, updateQuantity }: CartProp
     message += `Teléfono: ${phone}`;
 
     const encodedMessage = encodeURIComponent(message);
-    const whatsappUrl = `https://wa.me/56930528030?text=${encodedMessage}`;
+    const whatsappUrl = `https://wa.me/56912345678?text=${encodedMessage}`;
     
     window.open(whatsappUrl, "_blank");
   };

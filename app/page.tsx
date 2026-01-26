@@ -79,11 +79,11 @@ export default function Home() {
             transition={{ duration: 0.8 }}
           >
             <h1 className="text-5xl md:text-7xl font-bold mb-6 text-glow">
-              <span className="text-gold">Saian</span>{" "}
-              <span className="text-neon">Sushi</span>
+              <span className="text-gold">Sushi</span>{" "}
+              <span className="text-neon">Demo</span>
             </h1>
             <p className="text-xl md:text-2xl text-gray-300 mb-8">
-              El Mejor Sushi de Talcahuano, directo a tu casa
+              El Mejor Sushi, directo a tu casa
             </p>
             <button
               onClick={scrollToMenu}
