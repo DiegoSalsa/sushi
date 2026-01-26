@@ -76,7 +76,7 @@ export default function RollBuilder({ item, isOpen, onClose, onAddToCart }: Roll
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
-            className="fixed inset-2 sm:inset-4 m-auto w-full max-w-md h-fit max-h-[calc(100vh-16px)] sm:max-h-[calc(100vh-32px)] bg-zinc-900 rounded-xl z-[110] border-2 border-neon shadow-[0_0_30px_rgba(255,153,0,0.6)] flex flex-col overflow-hidden"
+            className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[calc(100%-16px)] sm:w-[calc(100%-32px)] max-w-md max-h-[calc(100vh-16px)] sm:max-h-[calc(100vh-32px)] bg-zinc-900 rounded-xl z-[110] border-2 border-neon shadow-[0_0_30px_rgba(255,153,0,0.6)] flex flex-col overflow-hidden"
           >
             {/* Header */}
             <div className="bg-gradient-to-r from-neon to-orange-600 p-3 border-b-2 border-gold flex-shrink-0">

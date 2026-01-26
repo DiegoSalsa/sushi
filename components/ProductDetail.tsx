@@ -50,7 +50,7 @@ export default function ProductDetail({ item, isOpen, onClose, onAddToCart }: Pr
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
-            className="fixed inset-2 sm:inset-4 m-auto w-full max-w-lg h-fit max-h-[calc(100vh-16px)] sm:max-h-[calc(100vh-32px)] bg-white rounded-2xl z-[110] overflow-hidden border-4 border-neon shadow-[0_0_50px_rgba(255,153,0,0.5)]"
+            className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[calc(100%-16px)] sm:w-[calc(100%-32px)] max-w-lg max-h-[calc(100vh-16px)] sm:max-h-[calc(100vh-32px)] bg-white rounded-2xl z-[110] overflow-hidden border-4 border-neon shadow-[0_0_50px_rgba(255,153,0,0.5)]"
           >
             {/* Image */}
             <div className="relative h-64 overflow-hidden">
