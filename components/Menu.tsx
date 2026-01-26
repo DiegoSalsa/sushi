@@ -195,8 +195,8 @@ export default function Menu({ addToCart }: MenuProps) {
             key={item.id}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: index * 0.1 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.3 }}
             className="bg-zinc-900/50 rounded-2xl overflow-hidden border border-zinc-800 hover:border-neon/50 transition-all duration-300 card-glow hover:card-glow-hover"
           >
             <div className="relative h-48 overflow-hidden">
