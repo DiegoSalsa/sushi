@@ -82,48 +82,49 @@ export default function ColorSelector({ isCartOpen }: ColorSelectorProps) {
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[calc(100%-24px)] max-w-md bg-zinc-900 rounded-2xl border-2 border-neon shadow-2xl z-[151] p-4 sm:p-6">
+              className="fixed inset-4 sm:left-1/2 sm:top-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2 sm:inset-auto sm:w-[calc(100%-32px)] sm:max-w-md sm:h-auto h-fit my-auto bg-zinc-900 rounded-2xl border-2 border-neon shadow-2xl z-[151] p-6 overflow-y-auto"
             >
               {/* Header */}
-              <div className="flex items-center justify-between mb-4 sm:mb-6">
+              <div className="flex items-center justify-between mb-6">
                 <div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-white">Colores de Marca</h3>
-                  <p className="text-xs sm:text-sm text-gray-400">Se adapta a tu identidad</p>
+                  <h3 className="text-2xl font-bold text-white">Colores de Marca</h3>
+                  <p className="text-sm text-gray-400">Se adapta a tu identidad</p>
                 </div>
                 <button
                   onClick={() => setIsOpen(false)}
-                  className="text-gray-400 hover:text-white transition-colors p-2"
+                  className="text-white bg-red-600 hover:bg-red-700 transition-colors p-2 rounded-lg"
+                  aria-label="Cerrar selector"
                 >
-                  <X className="w-6 h-6" />
+                  <X className="w-7 h-7" />
                 </button>
               </div>
 
               {/* Color Grid */}
-              <div className="grid grid-cols-2 gap-2 sm:gap-3">
+              <div className="grid grid-cols-2 gap-3">
                 {themes.map((theme, index) => (
                   <motion.button
                     key={index}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={() => applyTheme(theme.primary, theme.secondary)}
-                    className="p-3 sm:p-4 bg-zinc-800 rounded-xl border border-zinc-700 hover:border-zinc-600 transition-all"
+                    className="p-4 bg-zinc-800 rounded-xl border border-zinc-700 hover:border-zinc-600 transition-all"
                   >
                     <div className="flex gap-2 mb-2">
                       <div
-                        className="w-7 h-7 sm:w-8 sm:h-8 rounded-full border-2 border-white/20"
+                        className="w-9 h-9 rounded-full border-2 border-white/20"
                         style={{ backgroundColor: theme.primary }}
                       />
                       <div
-                        className="w-7 h-7 sm:w-8 sm:h-8 rounded-full border-2 border-white/20"
+                        className="w-9 h-9 rounded-full border-2 border-white/20"
                         style={{ backgroundColor: theme.secondary }}
                       />
                     </div>
-                    <p className="text-xs sm:text-sm font-semibold text-white text-left">{theme.name}</p>
+                    <p className="text-sm font-semibold text-white text-left">{theme.name}</p>
                   </motion.button>
                 ))}
               </div>
 
-              <p className="text-[10px] sm:text-xs text-gray-500 text-center mt-4 sm:mt-6">
+              <p className="text-xs text-gray-500 text-center mt-6">
                 💡 Demo: Los colores se aplican en tiempo real
               </p>
             </motion.div>

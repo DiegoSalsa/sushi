@@ -63,8 +63,9 @@ export default function Cart({ cart, isOpen, onClose, updateQuantity }: CartProp
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/80 backdrop-blur-sm z-[200]"
+            className="fixed inset-0 bg-black/90 backdrop-blur-sm z-[200] touch-auto"
             onClick={onClose}
+            onTouchEnd={onClose}
           />
 
           {/* Slide-over */}
@@ -81,9 +82,10 @@ export default function Cart({ cart, isOpen, onClose, updateQuantity }: CartProp
                 <h2 className="text-xl sm:text-2xl font-bold text-glow">Tu Pedido</h2>
                 <button
                   onClick={onClose}
-                  className="text-white bg-zinc-800 hover:bg-zinc-700 transition-colors p-2 rounded-lg"
+                  className="text-white bg-red-600 hover:bg-red-700 transition-colors p-3 rounded-lg touch-auto"
+                  aria-label="Cerrar carrito"
                 >
-                  <X className="w-7 h-7 sm:w-6 sm:h-6" />
+                  <X className="w-8 h-8" />
                 </button>
               </div>
             </div>
