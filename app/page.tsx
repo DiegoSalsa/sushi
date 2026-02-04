@@ -276,10 +276,10 @@ export default function Home() {
       />
 
       {/* WhatsApp Button */}
-      <WhatsAppButton />
+      <WhatsAppButton isCartOpen={isCartOpen} />
 
       {/* Color Selector */}
-      <ColorSelector />
+      <ColorSelector isCartOpen={isCartOpen} />
     </main>
   );
 }

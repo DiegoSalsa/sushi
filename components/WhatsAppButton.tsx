@@ -1,13 +1,19 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
-export default function WhatsAppButton() {
+interface WhatsAppButtonProps {
+  isCartOpen: boolean;
+}
+
+export default function WhatsAppButton({ isCartOpen }: WhatsAppButtonProps) {
   const whatsappNumber = "56912345678";
   const message = encodeURIComponent("¡Hola! Me gustaría hacer un pedido 🍣");
 
   return (
-    <motion.a
+    <AnimatePresence>
+      {!isCartOpen && (
+        <motion.a
       href={`https://wa.me/${whatsappNumber}?text=${message}`}
       target="_blank"
       rel="noopener noreferrer"
@@ -54,5 +60,7 @@ export default function WhatsAppButton() {
         <div className="absolute right-full top-1/2 -translate-y-1/2 border-8 border-transparent border-r-black/90"></div>
       </div>
     </motion.a>
+      )}
+    </AnimatePresence>
   );
 }
