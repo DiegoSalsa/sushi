@@ -250,7 +250,7 @@ export default function Menu({ addToCart }: MenuProps) {
   }).filter(([_, category]: any) => category.items.length > 0);
 
   return (
-    <div className="max-w-7xl mx-auto space-y-16 w-full overflow-x-hidden">
+    <div className="max-w-7xl mx-auto space-y-16 w-full">
       <motion.h2
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
