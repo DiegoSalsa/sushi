@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { Eye, Search, Heart } from "lucide-react";
 import RollBuilder from "./RollBuilder";
 import ProductDetail from "./ProductDetail";
+import PromoBuilder from "./PromoBuilder";
 import type { CartItem } from "@/app/page";
 
 interface MenuProps {
@@ -139,6 +140,7 @@ const MENU_CATEGORIES = {
         description: "32 piezas mixtas variadas (4 rolls diferentes)",
         image: "https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?q=80&w=500&auto=format&fit=crop",
         customizable: false,
+        rollsToSelect: 4,
         badge: "MÁS VENDIDO",
       },
       {
@@ -156,6 +158,7 @@ const MENU_CATEGORIES = {
         description: "40 piezas fritas variadas (5 rolls diferentes)",
         image: "https://images.unsplash.com/photo-1580822184713-fc5400e7fe10?q=80&w=500&auto=format&fit=crop",
         customizable: false,
+        rollsToSelect: 5,
       },
       {
         id: "promo-clasica-4",
@@ -204,6 +207,7 @@ const MENU_CATEGORIES = {
 export default function Menu({ addToCart }: MenuProps) {
   const [selectedItem, setSelectedItem] = useState<any>(null);
   const [detailItem, setDetailItem] = useState<any>(null);
+  const [promoItem, setPromoItem] = useState<any>(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [activeFilter, setActiveFilter] = useState("all");
   const [favorites, setFavorites] = useState<Set<string>>(new Set());
@@ -211,6 +215,9 @@ export default function Menu({ addToCart }: MenuProps) {
   const handleQuickAdd = (item: any) => {
     if (item.customizable) {
       setSelectedItem(item);
+    } else if (item.rollsToSelect) {
+      // Es una promo con selección de rolls
+      setPromoItem(item);
     } else {
       setDetailItem(item);
     }
@@ -409,6 +416,13 @@ export default function Menu({ addToCart }: MenuProps) {
                       >
                         Personalizar
                       </button>
+                    ) : item.rollsToSelect ? (
+                      <button
+                        onClick={() => handleQuickAdd(item)}
+                        className="bg-neon hover:bg-orange-600 text-black font-bold py-2 px-6 rounded-full transition-all duration-300 transform hover:scale-105"
+                      >
+                        Elegir Rolls
+                      </button>
                     ) : (
                       <button
                         onClick={() => handleQuickAdd(item)}
@@ -442,6 +456,16 @@ export default function Menu({ addToCart }: MenuProps) {
           item={detailItem}
           isOpen={!!detailItem}
           onClose={() => setDetailItem(null)}
+          onAddToCart={addToCart}
+        />
+      )}
+
+      {/* Promo Builder Modal */}
+      {promoItem && promoItem.rollsToSelect && (
+        <PromoBuilder
+          promo={promoItem}
+          isOpen={!!promoItem}
+          onClose={() => setPromoItem(null)}
           onAddToCart={addToCart}
         />
       )}
