@@ -48,20 +48,50 @@ export default function WhyChooseUs() {
           {features.map((feature, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 50, rotateX: -15 }}
+              whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              whileHover={{ y: -10 }}
-              className="bg-black border border-zinc-800 rounded-xl p-6 hover:border-neon transition-all duration-300"
+              transition={{ 
+                delay: index * 0.15,
+                duration: 0.6,
+                type: "spring",
+                stiffness: 100
+              }}
+              whileHover={{ 
+                y: -15,
+                rotateY: 5,
+                scale: 1.05,
+                transition: { duration: 0.3 }
+              }}
+              className="bg-black border border-zinc-800 rounded-xl p-6 hover:border-neon transition-all duration-300 relative overflow-hidden group"
+              style={{ transformStyle: "preserve-3d" }}
             >
-              <div className="w-14 h-14 bg-gradient-to-br from-neon to-orange-600 rounded-lg flex items-center justify-center mb-4">
+              {/* Glow effect on hover */}
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-br from-neon/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                initial={false}
+              />
+              
+              <motion.div 
+                className="w-14 h-14 bg-gradient-to-br from-neon to-orange-600 rounded-lg flex items-center justify-center mb-4 relative z-10"
+                whileHover={{ rotate: 360, scale: 1.1 }}
+                transition={{ duration: 0.6 }}
+              >
                 <feature.icon className="w-7 h-7 text-black" />
-              </div>
-              <h3 className="text-xl font-bold mb-2 text-gold">{feature.title}</h3>
-              <p className="text-gray-400 text-sm leading-relaxed">
+              </motion.div>
+              
+              <h3 className="text-xl font-bold mb-2 text-gold relative z-10">{feature.title}</h3>
+              <p className="text-gray-400 text-sm leading-relaxed relative z-10">
                 {feature.description}
               </p>
+
+              {/* Shimmer effect */}
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent"
+                initial={{ x: "-100%" }}
+                whileHover={{ x: "100%" }}
+                transition={{ duration: 0.8 }}
+              />
             </motion.div>
           ))}
         </div>

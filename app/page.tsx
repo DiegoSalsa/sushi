@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ChevronDown, ShoppingCart } from "lucide-react";
 import Navbar from "@/components/Navbar";
@@ -16,6 +16,7 @@ import ColorSelector from "@/components/ColorSelector";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import Stats from "@/components/Stats";
 import InfoSection from "@/components/InfoSection";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 export interface CartItem {
   id: string;
@@ -86,45 +87,130 @@ export default function Home() {
 
       {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        {/* Background Image with Overlay */}
+        {/* Particles Background */}
         <div className="absolute inset-0 z-0">
+          {[...Array(20)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-2 h-2 bg-neon rounded-full opacity-20"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+              }}
+              animate={{
+                y: [0, -30, 0],
+                opacity: [0.2, 0.5, 0.2],
+                scale: [1, 1.5, 1],
+              }}
+              transition={{
+                duration: 3 + Math.random() * 2,
+                repeat: Infinity,
+                delay: Math.random() * 2,
+              }}
+            />
+          ))}
+        </div>
+
+        {/* Background Image with Overlay */}
+        <motion.div 
+          className="absolute inset-0 z-0"
+          initial={{ scale: 1.2 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 1.5, ease: "easeOut" }}
+        >
           <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-background z-10" />
           <img
             src="https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?q=80&w=2127&auto=format&fit=crop"
             alt="Sushi Background"
             className="w-full h-full object-cover"
           />
-        </div>
+        </motion.div>
 
         {/* Content */}
         <div className="relative z-20 text-center px-4 max-w-4xl mx-auto">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            initial={{ opacity: 0, y: 50, scale: 0.8 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ 
+              duration: 0.8,
+              type: "spring",
+              stiffness: 100
+            }}
           >
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 text-glow">
-              <span className="text-gold">Sushi</span>{" "}
-              <span className="text-neon">Demo</span>
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-300 mb-8">
-              El Mejor Sushi, directo a tu casa
-            </p>
-            <button
-              onClick={scrollToMenu}
-              className="bg-neon hover:bg-orange-600 text-black font-bold py-4 px-8 rounded-full text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-neon/50"
+            <motion.h1 
+              className="text-5xl md:text-7xl font-bold mb-6"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.8 }}
             >
-              Pedir Ahora
-            </button>
+              <motion.span 
+                className="text-gold inline-block"
+                animate={{ 
+                  textShadow: [
+                    "0 0 20px rgba(255, 215, 0, 0.5)",
+                    "0 0 40px rgba(255, 215, 0, 0.8)",
+                    "0 0 20px rgba(255, 215, 0, 0.5)"
+                  ]
+                }}
+                transition={{ duration: 2, repeat: Infinity }}
+              >
+                Sushi
+              </motion.span>{" "}
+              <motion.span 
+                className="text-neon inline-block"
+                animate={{ 
+                  textShadow: [
+                    "0 0 20px rgba(255, 153, 0, 0.5)",
+                    "0 0 40px rgba(255, 153, 0, 0.8)",
+                    "0 0 20px rgba(255, 153, 0, 0.5)"
+                  ]
+                }}
+                transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
+              >
+                Demo
+              </motion.span>
+            </motion.h1>
+            
+            <motion.p 
+              className="text-xl md:text-2xl text-gray-300 mb-8"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5, duration: 0.8 }}
+            >
+              El Mejor Sushi, directo a tu casa
+            </motion.p>
+            
+            <motion.button
+              onClick={scrollToMenu}
+              className="relative bg-neon hover:bg-orange-600 text-black font-bold py-4 px-8 rounded-full text-lg transition-all duration-300 overflow-hidden group"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.7, duration: 0.8 }}
+              whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(255, 153, 0, 0.6)" }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <span className="relative z-10">Pedir Ahora</span>
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-30"
+                initial={{ x: "-100%" }}
+                whileHover={{ x: "100%" }}
+                transition={{ duration: 0.6 }}
+              />
+            </motion.button>
           </motion.div>
 
           {/* Scroll Indicator */}
           <motion.div
             className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
+            animate={{ y: [0, 15, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
           >
-            <ChevronDown className="w-8 h-8 text-neon" />
+            <motion.div
+              animate={{ opacity: [0.5, 1, 0.5] }}
+              transition={{ duration: 1.5, repeat: Infinity }}
+            >
+              <ChevronDown className="w-8 h-8 text-neon drop-shadow-[0_0_10px_rgba(255,153,0,0.8)]" />
+            </motion.div>
           </motion.div>
         </div>
       </section>
@@ -188,6 +274,9 @@ export default function Home() {
         isVisible={showToast}
         onClose={() => setShowToast(false)}
       />
+
+      {/* WhatsApp Button */}
+      <WhatsAppButton />
 
       {/* Color Selector */}
       <ColorSelector />

@@ -309,47 +309,90 @@ export default function Menu({ addToCart }: MenuProps) {
             {category.items.map((item: any, index: number) => (
               <motion.div
                 key={item.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, y: 50, rotateX: -10 }}
+                whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.3 }}
-                className="bg-zinc-900/50 rounded-2xl overflow-hidden border border-zinc-800 hover:border-neon/50 transition-all duration-300 card-glow hover:card-glow-hover"
+                transition={{ duration: 0.5, type: "spring", stiffness: 100 }}
+                whileHover={{ 
+                  y: -10, 
+                  scale: 1.02,
+                  rotateY: 2,
+                  transition: { duration: 0.3 }
+                }}
+                className="bg-zinc-900/50 rounded-2xl overflow-hidden border border-zinc-800 hover:border-neon/50 transition-all duration-300 card-glow hover:card-glow-hover relative group"
+                style={{ transformStyle: "preserve-3d" }}
               >
+                {/* Glow effect on hover */}
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-br from-neon/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-10"
+                  initial={false}
+                />
+                
                 <div className="relative h-48 overflow-hidden">
-                  <img
+                  <motion.img
                     src={item.image}
                     alt={item.name}
-                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
+                    className="w-full h-full object-cover"
+                    whileHover={{ scale: 1.15, rotate: 2 }}
+                    transition={{ duration: 0.6 }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 to-transparent" />
                   
-                  {/* Badge */}
+                  {/* Badge with shimmer effect */}
                   {item.badge && (
-                    <div className={`absolute top-3 right-3 px-3 py-1 rounded-full text-xs font-bold shadow-lg ${
-                      item.badge === "NUEVO" 
-                        ? "bg-green-500 text-white" 
-                        : "bg-gold text-black"
-                    }`}>
-                      {item.badge}
-                    </div>
+                    <motion.div 
+                      className={`absolute top-3 right-3 px-3 py-1 rounded-full text-xs font-bold shadow-lg overflow-hidden ${
+                        item.badge === "NUEVO" 
+                          ? "bg-green-500 text-white" 
+                          : "bg-gold text-black"
+                      }`}
+                      initial={{ scale: 0, rotate: -180 }}
+                      animate={{ scale: 1, rotate: 0 }}
+                      transition={{ type: "spring", stiffness: 200, damping: 15 }}
+                      whileHover={{ scale: 1.1, rotate: 5 }}
+                    >
+                      <span className="relative z-10">{item.badge}</span>
+                      {/* Shimmer effect */}
+                      <motion.div
+                        className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent"
+                        animate={{ x: ["-100%", "200%"] }}
+                        transition={{ 
+                          duration: 2,
+                          repeat: Infinity,
+                          ease: "linear",
+                          repeatDelay: 1
+                        }}
+                      />
+                    </motion.div>
                   )}
 
                   {/* Favorite Button */}
-                  <button
+                  <motion.button
                     onClick={(e) => {
                       e.stopPropagation();
                       toggleFavorite(item.id);
                     }}
-                    className="absolute top-3 left-3 p-2 bg-black/50 backdrop-blur-sm rounded-full hover:bg-black/70 transition-all duration-300"
+                    whileHover={{ scale: 1.2, rotate: 10 }}
+                    whileTap={{ scale: 0.9 }}
+                    className={`absolute top-3 left-3 p-2 backdrop-blur-sm rounded-full transition-all duration-300 ${
+                      favorites.has(item.id)
+                        ? "bg-red-500 shadow-lg shadow-red-500/50"
+                        : "bg-black/50 hover:bg-black/70"
+                    }`}
                   >
-                    <Heart
-                      className={`w-5 h-5 transition-colors ${
-                        favorites.has(item.id)
-                          ? "fill-red-500 text-red-500"
-                          : "text-white"
-                      }`}
-                    />
-                  </button>
+                    <motion.div
+                      animate={favorites.has(item.id) ? { scale: [1, 1.3, 1] } : {}}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <Heart
+                        className={`w-5 h-5 transition-colors ${
+                          favorites.has(item.id)
+                            ? "fill-red-500 text-white"
+                            : "text-white"
+                        }`}
+                      />
+                    </motion.div>
+                  </motion.button>
                 </div>
 
                 <div className="p-6">
