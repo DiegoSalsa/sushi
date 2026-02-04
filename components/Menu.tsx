@@ -6,6 +6,7 @@ import { Eye, Search, Heart } from "lucide-react";
 import RollBuilder from "./RollBuilder";
 import ProductDetail from "./ProductDetail";
 import PromoBuilder from "./PromoBuilder";
+import MultiHandRollBuilder from "./MultiHandRollBuilder";
 import type { CartItem } from "@/app/page";
 
 interface MenuProps {
@@ -37,9 +38,10 @@ const MENU_CATEGORIES = {
         id: "hand-roll-3",
         name: "Hand Roll x3",
         price: 10500,
-        description: "3 unidades a elección",
+        description: "3 unidades personalizables",
         image: "https://images.unsplash.com/photo-1611143669185-af224c5e3252?q=80&w=500&auto=format&fit=crop",
         customizable: false,
+        quantity: 3,
       },
     ],
   },
@@ -208,6 +210,7 @@ export default function Menu({ addToCart }: MenuProps) {
   const [selectedItem, setSelectedItem] = useState<any>(null);
   const [detailItem, setDetailItem] = useState<any>(null);
   const [promoItem, setPromoItem] = useState<any>(null);
+  const [multiRollItem, setMultiRollItem] = useState<any>(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [activeFilter, setActiveFilter] = useState("all");
   const [favorites, setFavorites] = useState<Set<string>>(new Set());
@@ -215,6 +218,9 @@ export default function Menu({ addToCart }: MenuProps) {
   const handleQuickAdd = (item: any) => {
     if (item.customizable) {
       setSelectedItem(item);
+    } else if (item.quantity && item.quantity > 1) {
+      // Es un multi hand roll
+      setMultiRollItem(item);
     } else if (item.rollsToSelect) {
       // Es una promo con selección de rolls
       setPromoItem(item);
@@ -466,6 +472,16 @@ export default function Menu({ addToCart }: MenuProps) {
           promo={promoItem}
           isOpen={!!promoItem}
           onClose={() => setPromoItem(null)}
+          onAddToCart={addToCart}
+        />
+      )}
+
+      {/* Multi Hand Roll Builder Modal */}
+      {multiRollItem && multiRollItem.quantity && (
+        <MultiHandRollBuilder
+          item={multiRollItem}
+          isOpen={!!multiRollItem}
+          onClose={() => setMultiRollItem(null)}
           onAddToCart={addToCart}
         />
       )}
