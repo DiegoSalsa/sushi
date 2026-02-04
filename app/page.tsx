@@ -79,24 +79,14 @@ export default function Home() {
 
       {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        {/* Background Video with Overlay */}
+        {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-background z-10" />
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
+          <img
+            src="https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?q=80&w=2127&auto=format&fit=crop"
+            alt="Sushi Background"
             className="w-full h-full object-cover"
-          >
-            <source src="https://cdn.pixabay.com/video/2022/03/23/111912-691903284_large.mp4" type="video/mp4" />
-            {/* Fallback image */}
-            <img
-              src="https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?q=80&w=2127&auto=format&fit=crop"
-              alt="Sushi Background"
-              className="w-full h-full object-cover"
-            />
-          </video>
+          />
         </div>
 
         {/* Content */}
