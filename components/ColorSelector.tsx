@@ -73,7 +73,7 @@ export default function ColorSelector({ isCartOpen }: ColorSelectorProps) {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/80 backdrop-blur-sm z-[100]"
+              className="fixed inset-0 bg-black/80 backdrop-blur-sm z-[150]"
               onClick={() => setIsOpen(false)}
             />
 
@@ -82,7 +82,7 @@ export default function ColorSelector({ isCartOpen }: ColorSelectorProps) {
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[calc(100%-24px)] max-w-md bg-zinc-900 rounded-2xl border-2 border-neon shadow-2xl z-[110] p-4 sm:p-6"
+              className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[calc(100%-24px)] max-w-md bg-zinc-900 rounded-2xl border-2 border-neon shadow-2xl z-[151] p-4 sm:p-6">
             >
               {/* Header */}
               <div className="flex items-center justify-between mb-4 sm:mb-6">

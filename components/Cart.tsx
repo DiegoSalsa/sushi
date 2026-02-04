@@ -63,7 +63,7 @@ export default function Cart({ cart, isOpen, onClose, updateQuantity }: CartProp
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50"
+            className="fixed inset-0 bg-black/80 backdrop-blur-sm z-[200]"
             onClick={onClose}
           />
 
@@ -73,7 +73,7 @@ export default function Cart({ cart, isOpen, onClose, updateQuantity }: CartProp
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="fixed right-0 top-0 bottom-0 w-full sm:w-[90%] md:w-[500px] bg-zinc-900 z-50 shadow-2xl overflow-hidden flex flex-col border-l-2 border-neon/30"
+            className="fixed right-0 top-0 bottom-0 w-full sm:w-[90%] md:w-[500px] bg-zinc-900 z-[201] shadow-2xl overflow-hidden flex flex-col border-l-2 border-neon/30"
           >
             {/* Header */}
             <div className="bg-gradient-to-r from-neon/20 to-gold/20 p-4 sm:p-6 border-b border-zinc-800">
@@ -81,9 +81,9 @@ export default function Cart({ cart, isOpen, onClose, updateQuantity }: CartProp
                 <h2 className="text-xl sm:text-2xl font-bold text-glow">Tu Pedido</h2>
                 <button
                   onClick={onClose}
-                  className="text-gray-400 hover:text-white transition-colors"
+                  className="text-white bg-zinc-800 hover:bg-zinc-700 transition-colors p-2 rounded-lg"
                 >
-                  <X className="w-6 h-6" />
+                  <X className="w-7 h-7 sm:w-6 sm:h-6" />
                 </button>
               </div>
             </div>
