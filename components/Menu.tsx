@@ -34,15 +34,6 @@ const MENU_CATEGORIES = {
         image: "https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?q=80&w=500&auto=format&fit=crop",
         customizable: true,
       },
-      {
-        id: "hand-roll-3",
-        name: "Hand Roll x3",
-        price: 10500,
-        description: "3 unidades personalizables",
-        image: "https://images.unsplash.com/photo-1611143669185-af224c5e3252?q=80&w=500&auto=format&fit=crop",
-        customizable: false,
-        quantity: 3,
-      },
     ],
   },
   clasicos: {
