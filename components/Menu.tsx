@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Eye } from "lucide-react";
+import { Eye, Search, Heart } from "lucide-react";
 import RollBuilder from "./RollBuilder";
 import ProductDetail from "./ProductDetail";
 import type { CartItem } from "@/app/page";
@@ -22,6 +22,7 @@ const MENU_CATEGORIES = {
         description: "1 unidad personalizable",
         image: "https://images.unsplash.com/photo-1553621042-f6e147245754?q=80&w=500&auto=format&fit=crop",
         customizable: true,
+        badge: "MÁS VENDIDO",
       },
       {
         id: "hand-roll-xl",
@@ -51,6 +52,7 @@ const MENU_CATEGORIES = {
         description: "Base de arroz + 5 rellenos (dos proteínas)",
         image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=500&auto=format&fit=crop",
         customizable: false,
+        badge: "NUEVO",
       },
       {
         id: "roll-individual",
@@ -67,6 +69,7 @@ const MENU_CATEGORIES = {
         description: "16 piezas - 2 rolls a elección",
         image: "https://images.unsplash.com/photo-1617196034796-73dfa7b1fd56?q=80&w=500&auto=format&fit=crop",
         customizable: false,
+        badge: "MÁS VENDIDO",
       },
       {
         id: "hosomaki",
@@ -96,6 +99,7 @@ const MENU_CATEGORIES = {
         description: "16 piezas - Cobertura + 3 rellenos (1 proteína y 2 vegetales) + salsa acevichada",
         image: "https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?q=80&w=500&auto=format&fit=crop",
         customizable: false,
+        badge: "MÁS VENDIDO",
       },
       {
         id: "ceviche-saian",
@@ -104,6 +108,7 @@ const MENU_CATEGORIES = {
         description: "500gr - Base de camarón, salmón + palta, cebolla morada, pimentón, cilantro y limón",
         image: "https://images.unsplash.com/photo-1626200419199-391ae4be7a41?q=80&w=500&auto=format&fit=crop",
         customizable: false,
+        badge: "NUEVO",
       },
       {
         id: "sushi-burger",
@@ -112,6 +117,7 @@ const MENU_CATEGORIES = {
         description: "1 proteína + 2 vegetales",
         image: "https://images.unsplash.com/photo-1554520735-0a6b8b6ce8b7?q=80&w=500&auto=format&fit=crop",
         customizable: false,
+        badge: "NUEVO",
       },
       {
         id: "la-yegueta",
@@ -133,6 +139,7 @@ const MENU_CATEGORIES = {
         description: "32 piezas mixtas a elección (4 rolls)",
         image: "https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?q=80&w=500&auto=format&fit=crop",
         customizable: false,
+        badge: "MÁS VENDIDO",
       },
       {
         id: "promo-clasica-2",
@@ -197,6 +204,9 @@ const MENU_CATEGORIES = {
 export default function Menu({ addToCart }: MenuProps) {
   const [selectedItem, setSelectedItem] = useState<any>(null);
   const [detailItem, setDetailItem] = useState<any>(null);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [activeFilter, setActiveFilter] = useState("all");
+  const [favorites, setFavorites] = useState<Set<string>>(new Set());
 
   const handleQuickAdd = (item: any) => {
     if (item.customizable) {
@@ -205,6 +215,35 @@ export default function Menu({ addToCart }: MenuProps) {
       setDetailItem(item);
     }
   };
+
+  const toggleFavorite = (itemId: string) => {
+    setFavorites(prev => {
+      const newFavorites = new Set(prev);
+      if (newFavorites.has(itemId)) {
+        newFavorites.delete(itemId);
+      } else {
+        newFavorites.add(itemId);
+      }
+      return newFavorites;
+    });
+  };
+
+  // Filter categories based on active filter
+  const filteredCategories = activeFilter === "all" 
+    ? Object.entries(MENU_CATEGORIES)
+    : Object.entries(MENU_CATEGORIES).filter(([key]) => key === activeFilter);
+
+  // Filter by search query
+  const searchFilteredCategories = filteredCategories.map(([key, category]) => {
+    if (!searchQuery) return [key, category];
+    
+    const filteredItems = category.items.filter(item => 
+      item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      item.description.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+    
+    return [key, { ...category, items: filteredItems }];
+  }).filter(([_, category]: any) => category.items.length > 0);
 
   return (
     <div className="max-w-7xl mx-auto space-y-16">
@@ -217,7 +256,45 @@ export default function Menu({ addToCart }: MenuProps) {
         Nuestro <span className="text-neon">Menú</span>
       </motion.h2>
 
-      {Object.entries(MENU_CATEGORIES).map(([key, category]) => (
+      {/* Search and Filters */}
+      <div className="space-y-4 mb-8">
+        {/* Search Bar */}
+        <div className="relative max-w-md mx-auto">
+          <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+          <input
+            type="text"
+            placeholder="Buscar productos..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="w-full pl-12 pr-4 py-3 bg-zinc-900 border border-zinc-800 rounded-xl text-white placeholder:text-gray-400 focus:outline-none focus:border-neon transition-colors"
+          />
+        </div>
+
+        {/* Filter Buttons */}
+        <div className="flex gap-2 flex-wrap justify-center">
+          {[
+            { key: "all", label: "Todos" },
+            { key: "handRolls", label: "Hand Rolls" },
+            { key: "clasicos", label: "Clásicos" },
+            { key: "especiales", label: "Especiales" },
+            { key: "promos", label: "Promos" },
+          ].map((filter) => (
+            <button
+              key={filter.key}
+              onClick={() => setActiveFilter(filter.key)}
+              className={`px-4 py-2 rounded-full font-semibold transition-all duration-300 ${
+                activeFilter === filter.key
+                  ? "bg-neon text-black shadow-lg"
+                  : "bg-zinc-900 text-gray-400 hover:text-white border border-zinc-800 hover:border-zinc-700"
+              }`}
+            >
+              {filter.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {searchFilteredCategories.map(([key, category]: any) => (
         <section key={key}>
           <motion.h3
             initial={{ opacity: 0, x: -20 }}
@@ -245,6 +322,34 @@ export default function Menu({ addToCart }: MenuProps) {
                     className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 to-transparent" />
+                  
+                  {/* Badge */}
+                  {item.badge && (
+                    <div className={`absolute top-3 right-3 px-3 py-1 rounded-full text-xs font-bold shadow-lg ${
+                      item.badge === "NUEVO" 
+                        ? "bg-green-500 text-white" 
+                        : "bg-gold text-black"
+                    }`}>
+                      {item.badge}
+                    </div>
+                  )}
+
+                  {/* Favorite Button */}
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      toggleFavorite(item.id);
+                    }}
+                    className="absolute top-3 left-3 p-2 bg-black/50 backdrop-blur-sm rounded-full hover:bg-black/70 transition-all duration-300"
+                  >
+                    <Heart
+                      className={`w-5 h-5 transition-colors ${
+                        favorites.has(item.id)
+                          ? "fill-red-500 text-red-500"
+                          : "text-white"
+                      }`}
+                    />
+                  </button>
                 </div>
 
                 <div className="p-6">

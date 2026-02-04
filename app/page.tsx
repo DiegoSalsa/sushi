@@ -6,6 +6,12 @@ import { ChevronDown, ShoppingCart } from "lucide-react";
 import Menu from "@/components/Menu";
 import Cart from "@/components/Cart";
 import Footer from "@/components/Footer";
+import Toast from "@/components/Toast";
+import DemoBanner from "@/components/DemoBanner";
+import PromoBanner from "@/components/PromoBanner";
+import HowItWorks from "@/components/HowItWorks";
+import FAQ from "@/components/FAQ";
+import ColorSelector from "@/components/ColorSelector";
 
 export interface CartItem {
   id: string;
@@ -22,6 +28,8 @@ export interface CartItem {
 export default function Home() {
   const [cart, setCart] = useState<CartItem[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [showToast, setShowToast] = useState(false);
+  const [toastMessage, setToastMessage] = useState("");
 
   const addToCart = (item: CartItem) => {
     setCart((prev) => {
@@ -39,6 +47,10 @@ export default function Home() {
       
       return [...prev, item];
     });
+    
+    // Show toast notification
+    setToastMessage(`✓ ${item.name} agregado al carrito`);
+    setShowToast(true);
   };
 
   const updateQuantity = (index: number, quantity: number) => {
@@ -59,16 +71,32 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-background">
+      {/* Demo Banner */}
+      <DemoBanner />
+
+      {/* Promo Banner */}
+      <PromoBanner />
+
       {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        {/* Background Image with Overlay */}
+        {/* Background Video with Overlay */}
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-background z-10" />
-          <img
-            src="https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?q=80&w=2127&auto=format&fit=crop"
-            alt="Sushi Background"
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
             className="w-full h-full object-cover"
-          />
+          >
+            <source src="https://cdn.pixabay.com/video/2022/03/23/111912-691903284_large.mp4" type="video/mp4" />
+            {/* Fallback image */}
+            <img
+              src="https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?q=80&w=2127&auto=format&fit=crop"
+              alt="Sushi Background"
+              className="w-full h-full object-cover"
+            />
+          </video>
         </div>
 
         {/* Content */}
@@ -109,6 +137,12 @@ export default function Home() {
         <Menu addToCart={addToCart} />
       </section>
 
+      {/* How It Works */}
+      <HowItWorks />
+
+      {/* FAQ */}
+      <FAQ />
+
       {/* Footer */}
       <Footer />
 
@@ -117,13 +151,20 @@ export default function Home() {
         <motion.button
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
+          whileTap={{ scale: 0.95 }}
+          key={cartItemsCount}
           className="fixed bottom-6 right-6 bg-neon hover:bg-orange-600 text-black p-4 rounded-full shadow-2xl z-50 transition-all duration-300 transform hover:scale-110"
           onClick={() => setIsCartOpen(true)}
         >
           <ShoppingCart className="w-6 h-6" />
-          <span className="absolute -top-2 -right-2 bg-gold text-black w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold">
+          <motion.span
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ type: "spring", stiffness: 500, damping: 15 }}
+            className="absolute -top-2 -right-2 bg-gold text-black w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold"
+          >
             {cartItemsCount}
-          </span>
+          </motion.span>
         </motion.button>
       )}
 
@@ -134,6 +175,16 @@ export default function Home() {
         onClose={() => setIsCartOpen(false)}
         updateQuantity={updateQuantity}
       />
+
+      {/* Toast Notification */}
+      <Toast
+        message={toastMessage}
+        isVisible={showToast}
+        onClose={() => setShowToast(false)}
+      />
+
+      {/* Color Selector */}
+      <ColorSelector />
     </main>
   );
 }
