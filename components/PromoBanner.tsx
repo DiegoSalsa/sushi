@@ -33,7 +33,7 @@ export default function PromoBanner() {
   }, []);
 
   return (
-    <div className="bg-black border-b border-zinc-800 py-2 overflow-hidden mt-12">
+    <div className="bg-black border-b border-zinc-800 py-2 overflow-hidden">
       <div className="relative h-8">
         {promos.map((promo, index) => (
           <motion.div

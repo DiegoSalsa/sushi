@@ -13,7 +13,7 @@ export default function DemoBanner() {
     <motion.div
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className="fixed top-0 left-0 right-0 bg-gradient-to-r from-neon to-orange-600 text-black py-3 px-4 z-[150] shadow-lg"
+      className="relative top-0 left-0 right-0 bg-gradient-to-r from-neon to-orange-600 text-black py-3 px-4 z-10 shadow-lg mt-20"
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <div className="flex items-center gap-2">
