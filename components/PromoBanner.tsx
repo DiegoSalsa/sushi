@@ -17,11 +17,6 @@ export default function PromoBanner() {
       icon: Clock,
       text: "Entrega en 30-45 minutos",
       color: "from-neon to-orange-600"
-    },
-    {
-      icon: Percent,
-      text: "10% OFF en tu primera orden",
-      color: "from-purple-500 to-pink-600"
     }
   ];
 
