@@ -234,10 +234,10 @@ export default function Menu({ addToCart }: MenuProps) {
     : Object.entries(MENU_CATEGORIES).filter(([key]) => key === activeFilter);
 
   // Filter by search query
-  const searchFilteredCategories = filteredCategories.map(([key, category]) => {
+  const searchFilteredCategories = filteredCategories.map(([key, category]: [string, any]) => {
     if (!searchQuery) return [key, category];
     
-    const filteredItems = category.items.filter(item => 
+    const filteredItems = category.items.filter((item: any) => 
       item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       item.description.toLowerCase().includes(searchQuery.toLowerCase())
     );
@@ -306,7 +306,7 @@ export default function Menu({ addToCart }: MenuProps) {
           </motion.h3>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {category.items.map((item, index) => (
+            {category.items.map((item: any, index: number) => (
               <motion.div
                 key={item.id}
                 initial={{ opacity: 0, y: 30 }}
