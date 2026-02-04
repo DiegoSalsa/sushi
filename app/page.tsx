@@ -13,6 +13,9 @@ import PromoBanner from "@/components/PromoBanner";
 import HowItWorks from "@/components/HowItWorks";
 import FAQ from "@/components/FAQ";
 import ColorSelector from "@/components/ColorSelector";
+import WhyChooseUs from "@/components/WhyChooseUs";
+import Stats from "@/components/Stats";
+import InfoSection from "@/components/InfoSection";
 
 export interface CartItem {
   id: string;
@@ -133,6 +136,15 @@ export default function Home() {
 
       {/* How It Works */}
       <HowItWorks />
+
+      {/* Why Choose Us */}
+      <WhyChooseUs />
+
+      {/* Stats */}
+      <Stats />
+
+      {/* Info Section - Horarios, Cobertura, Pagos */}
+      <InfoSection />
 
       {/* FAQ */}
       <FAQ />
