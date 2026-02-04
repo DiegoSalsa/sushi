@@ -18,18 +18,18 @@ interface PromoBuilderProps {
 }
 
 const AVAILABLE_ROLLS = [
-  { id: "california", name: "California Roll", category: "clásico" },
-  { id: "philadelphia", name: "Philadelphia Roll", category: "clásico" },
-  { id: "spicy-tuna", name: "Spicy Tuna Roll", category: "clásico" },
-  { id: "dragon", name: "Dragon Roll", category: "especial" },
-  { id: "rainbow", name: "Rainbow Roll", category: "especial" },
-  { id: "volcano", name: "Volcano Roll", category: "especial" },
-  { id: "tempura", name: "Tempura Roll", category: "frito" },
-  { id: "crispy-salmon", name: "Crispy Salmon Roll", category: "frito" },
-  { id: "golden", name: "Golden Roll", category: "frito" },
-  { id: "veggie", name: "Veggie Roll", category: "vegetariano" },
-  { id: "avocado", name: "Avocado Roll", category: "vegetariano" },
-  { id: "cucumber", name: "Cucumber Roll", category: "vegetariano" },
+  { id: "california", name: "California Roll", category: "clásico", description: "Cangrejo, palta, pepino y sésamo" },
+  { id: "philadelphia", name: "Philadelphia Roll", category: "clásico", description: "Salmón, queso crema y cebollín" },
+  { id: "spicy-tuna", name: "Spicy Tuna Roll", category: "clásico", description: "Atún picante, mayo y cebollín" },
+  { id: "dragon", name: "Dragon Roll", category: "especial", description: "Camarón tempura, palta encima y salsa anguila" },
+  { id: "rainbow", name: "Rainbow Roll", category: "especial", description: "California roll cubierto con salmón, atún y palta" },
+  { id: "volcano", name: "Volcano Roll", category: "especial", description: "Atún picante, cangrejo y salsa picante gratinada" },
+  { id: "tempura", name: "Tempura Roll", category: "frito", description: "Roll completo frito con vegetales y proteína" },
+  { id: "crispy-salmon", name: "Crispy Salmon Roll", category: "frito", description: "Salmón, queso crema, todo frito y crocante" },
+  { id: "golden", name: "Golden Roll", category: "frito", description: "Roll frito cubierto en panko dorado" },
+  { id: "veggie", name: "Veggie Roll", category: "vegetariano", description: "Palta, pepino, zanahoria y lechuga" },
+  { id: "avocado", name: "Avocado Roll", category: "vegetariano", description: "Palta fresca con sésamo" },
+  { id: "cucumber", name: "Cucumber Roll", category: "vegetariano", description: "Pepino fresco y crocante" },
 ];
 
 export default function PromoBuilder({ promo, isOpen, onClose, onAddToCart }: PromoBuilderProps) {
@@ -128,16 +128,17 @@ export default function PromoBuilder({ promo, isOpen, onClose, onAddToCart }: Pr
                         : "border-zinc-800 bg-zinc-900/50 opacity-40 cursor-not-allowed"
                     }`}
                   >
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <h3 className="font-bold text-white">{roll.name}</h3>
-                        <span className="text-xs text-gray-400 capitalize">{roll.category}</span>
+                    <div className="flex items-start justify-between gap-3">
+                      <div className="flex-1">
+                        <h3 className="font-bold text-white mb-1">{roll.name}</h3>
+                        <p className="text-xs text-gray-400 mb-2">{roll.description}</p>
+                        <span className="inline-block px-2 py-0.5 text-xs bg-zinc-700 text-gray-300 rounded-full capitalize">{roll.category}</span>
                       </div>
                       {isSelected && (
                         <motion.div
-                          initial={{ scale: 0 }}
-                          animate={{ scale: 1 }}
-                          className="w-6 h-6 bg-neon rounded-full flex items-center justify-center"
+                          initial={{ scale: 0, rotate: -180 }}
+                          animate={{ scale: 1, rotate: 0 }}
+                          className="w-6 h-6 bg-neon rounded-full flex items-center justify-center flex-shrink-0"
                         >
                           <Check className="w-4 h-4 text-black" />
                         </motion.div>
