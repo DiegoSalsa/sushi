@@ -23,7 +23,7 @@ export default function HowItWorks() {
   ];
 
   return (
-    <section className="py-16 px-4 bg-zinc-950">
+    <section id="como-funciona" className="py-16 px-4 bg-zinc-950">
       <div className="max-w-7xl mx-auto">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
