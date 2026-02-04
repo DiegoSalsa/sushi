@@ -29,12 +29,12 @@ export default function HowItWorks() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-4xl md:text-5xl font-bold text-center mb-12"
+          className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-12"
         >
           ¿Cómo <span className="text-neon">Funciona?</span>
         </motion.h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
           {steps.map((step, index) => (
             <motion.div
               key={index}

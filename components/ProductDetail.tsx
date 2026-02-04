@@ -53,7 +53,7 @@ export default function ProductDetail({ item, isOpen, onClose, onAddToCart }: Pr
             className="fixed left-2 right-2 top-2 bottom-2 sm:inset-4 m-auto w-auto max-w-lg h-fit max-h-[calc(100%-16px)] bg-white rounded-2xl z-[110] overflow-hidden border-4 border-neon shadow-[0_0_50px_rgba(255,153,0,0.5)]"
           >
             {/* Image */}
-            <div className="relative h-64 overflow-hidden">
+            <div className="relative h-48 sm:h-64 overflow-hidden">
               <img
                 src={item.image}
                 alt={item.name}
@@ -69,13 +69,13 @@ export default function ProductDetail({ item, isOpen, onClose, onAddToCart }: Pr
             </div>
 
             {/* Content */}
-            <div className="p-6 bg-zinc-900">
-              <h2 className="text-3xl font-bold mb-2 text-neon">{item.name}</h2>
-              <p className="text-gray-100 mb-6 text-lg">{item.description}</p>
+            <div className="p-4 sm:p-6 bg-zinc-900">
+              <h2 className="text-2xl sm:text-3xl font-bold mb-2 text-neon">{item.name}</h2>
+              <p className="text-gray-100 mb-4 sm:mb-6 text-base sm:text-lg">{item.description}</p>
 
               {/* Price */}
-              <div className="flex items-center justify-between mb-6">
-                <span className="text-4xl font-bold text-gold">
+              <div className="flex items-center justify-between mb-4 sm:mb-6">
+                <span className="text-3xl sm:text-4xl font-bold text-gold">
                   ${item.price.toLocaleString("es-CL")}
                 </span>
               </div>

@@ -49,10 +49,10 @@ export default function ColorSelector() {
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-24 right-6 bg-zinc-900 border-2 border-neon text-white p-4 rounded-full shadow-2xl z-50 hover:scale-110 transition-transform"
+        className="fixed bottom-20 sm:bottom-24 right-4 sm:right-6 bg-zinc-900 border-2 border-neon text-white p-3 sm:p-4 rounded-full shadow-2xl z-50 hover:scale-110 transition-transform"
         title="Cambiar colores"
       >
-        <Palette className="w-6 h-6" />
+        <Palette className="w-5 h-5 sm:w-6 sm:h-6" />
       </motion.button>
 
       {/* Color Selector Modal */}

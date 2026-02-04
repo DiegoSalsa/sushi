@@ -64,7 +64,7 @@ export default function Stats() {
   return (
     <section className="py-16 px-4 bg-gradient-to-b from-zinc-950 to-black border-y border-zinc-800">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
           {stats.map((stat, index) => (
             <motion.div
               key={index}
@@ -74,10 +74,10 @@ export default function Stats() {
               transition={{ delay: index * 0.1, type: "spring" }}
               className="text-center"
             >
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-neon to-orange-600 rounded-full mb-4">
-                <stat.icon className="w-8 h-8 text-black" />
+              <div className="inline-flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-neon to-orange-600 rounded-full mb-3 md:mb-4">
+                <stat.icon className="w-6 h-6 sm:w-8 sm:h-8 text-black" />
               </div>
-              <div className="text-4xl md:text-5xl font-bold text-neon mb-2">
+              <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-neon mb-2">
                 <AnimatedCounter value={stat.value} suffix={stat.suffix} />
               </div>
               <p className="text-gray-400 text-sm md:text-base font-semibold">

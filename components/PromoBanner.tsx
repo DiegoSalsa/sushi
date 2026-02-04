@@ -29,7 +29,7 @@ export default function PromoBanner() {
 
   return (
     <div className="bg-black border-b border-zinc-800 py-2 overflow-hidden">
-      <div className="relative h-8">
+      <div className="relative h-6 sm:h-8">
         {promos.map((promo, index) => (
           <motion.div
             key={index}
@@ -41,10 +41,10 @@ export default function PromoBanner() {
             transition={{ duration: 0.5 }}
             className="absolute inset-0 flex items-center justify-center gap-2"
           >
-            <div className={`p-1.5 rounded-full bg-gradient-to-r ${promo.color}`}>
-              <promo.icon className="w-4 h-4 text-white" />
+            <div className={`p-1 sm:p-1.5 rounded-full bg-gradient-to-r ${promo.color}`}>
+              <promo.icon className="w-3 h-3 sm:w-4 sm:h-4 text-white" />
             </div>
-            <p className="text-sm font-semibold text-white">
+            <p className="text-xs sm:text-sm font-semibold text-white">
               {promo.text}
             </p>
           </motion.div>

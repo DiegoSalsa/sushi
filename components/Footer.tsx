@@ -26,7 +26,7 @@ export default function Footer() {
     <footer className="bg-zinc-950 border-t border-zinc-800">
       <div className="max-w-7xl mx-auto px-4 py-16">
         {/* Main Content */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-12">
           {/* Info Section */}
           <div>
             <h3 className="text-2xl font-bold text-neon mb-6">Sushi Demo</h3>

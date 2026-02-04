@@ -30,7 +30,7 @@ export default function InfoSection() {
   return (
     <section className="py-20 px-4 bg-background">
       <div className="max-w-7xl mx-auto">
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
           {/* Horarios */}
           <motion.div
             initial={{ opacity: 0, x: -50, rotateY: -15 }}

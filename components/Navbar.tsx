@@ -21,26 +21,26 @@ export default function Navbar({ cartCount, onCartClick }: NavbarProps) {
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className="fixed top-0 left-0 right-0 bg-black/95 backdrop-blur-md border-b border-zinc-800 z-[100]"
+      className="fixed top-0 left-0 right-0 bg-black/95 backdrop-blur-md border-b border-zinc-800 z-[100] max-w-full overflow-x-hidden"
     >
-      <div className="max-w-7xl mx-auto px-4 py-4">
+      <div className="max-w-7xl mx-auto px-4 py-4 w-full">
         <div className="flex items-center justify-between">
           {/* Logo y Nombre */}
-          <div className="flex items-center gap-3">
-            <div className="w-12 h-12 bg-gradient-to-br from-neon to-orange-600 rounded-lg flex items-center justify-center shadow-lg">
-              <span className="text-2xl">🍣</span>
+          <div className="flex items-center gap-2 sm:gap-3">
+            <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-neon to-orange-600 rounded-lg flex items-center justify-center shadow-lg">
+              <span className="text-xl sm:text-2xl">🍣</span>
             </div>
             <div>
-              <h1 className="text-xl font-bold">
+              <h1 className="text-lg sm:text-xl font-bold">
                 <span className="text-gold">Sushi</span>{" "}
                 <span className="text-neon">Demo</span>
               </h1>
-              <p className="text-xs text-gray-400">Tu marca aquí</p>
+              <p className="text-[10px] sm:text-xs text-gray-400">Tu marca aquí</p>
             </div>
           </div>
 
           {/* Menu Desktop */}
-          <div className="hidden md:flex items-center gap-6">
+          <div className="hidden md:flex items-center gap-4 lg:gap-6">
             <button
               onClick={() => scrollToSection("menu")}
               className="text-gray-300 hover:text-neon transition-colors font-semibold"

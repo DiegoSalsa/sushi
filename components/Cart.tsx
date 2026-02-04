@@ -73,12 +73,12 @@ export default function Cart({ cart, isOpen, onClose, updateQuantity }: CartProp
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="fixed right-0 top-0 bottom-0 w-full md:w-[500px] bg-zinc-900 z-50 shadow-2xl overflow-hidden flex flex-col border-l-2 border-neon/30"
+            className="fixed right-0 top-0 bottom-0 w-full sm:w-[90%] md:w-[500px] bg-zinc-900 z-50 shadow-2xl overflow-hidden flex flex-col border-l-2 border-neon/30"
           >
             {/* Header */}
-            <div className="bg-gradient-to-r from-neon/20 to-gold/20 p-6 border-b border-zinc-800">
+            <div className="bg-gradient-to-r from-neon/20 to-gold/20 p-4 sm:p-6 border-b border-zinc-800">
               <div className="flex items-center justify-between">
-                <h2 className="text-2xl font-bold text-glow">Tu Pedido</h2>
+                <h2 className="text-xl sm:text-2xl font-bold text-glow">Tu Pedido</h2>
                 <button
                   onClick={onClose}
                   className="text-gray-400 hover:text-white transition-colors"
@@ -89,7 +89,7 @@ export default function Cart({ cart, isOpen, onClose, updateQuantity }: CartProp
             </div>
 
             {/* Cart Items */}
-            <div className="flex-1 overflow-y-auto p-6">
+            <div className="flex-1 overflow-y-auto p-4 sm:p-6">
               {cart.length === 0 ? (
                 <div className="text-center text-gray-400 py-12">
                   <p>Tu carrito está vacío</p>

@@ -250,12 +250,12 @@ export default function Menu({ addToCart }: MenuProps) {
   }).filter(([_, category]: any) => category.items.length > 0);
 
   return (
-    <div className="max-w-7xl mx-auto space-y-16">
+    <div className="max-w-7xl mx-auto space-y-16 w-full overflow-x-hidden">
       <motion.h2
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="text-4xl md:text-5xl font-bold text-center mb-12"
+        className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-12"
       >
         Nuestro <span className="text-neon">Menú</span>
       </motion.h2>
@@ -286,7 +286,7 @@ export default function Menu({ addToCart }: MenuProps) {
             <button
               key={filter.key}
               onClick={() => setActiveFilter(filter.key)}
-              className={`px-4 py-2 rounded-full font-semibold transition-all duration-300 ${
+              className={`px-3 py-2 sm:px-4 sm:py-2 rounded-full font-semibold text-sm sm:text-base transition-all duration-300 ${
                 activeFilter === filter.key
                   ? "bg-neon text-black shadow-lg"
                   : "bg-zinc-900 text-gray-400 hover:text-white border border-zinc-800 hover:border-zinc-700"
@@ -304,7 +304,7 @@ export default function Menu({ addToCart }: MenuProps) {
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="text-3xl font-bold mb-6 text-white border-l-4 border-neon pl-4"
+            className="text-2xl sm:text-3xl font-bold mb-6 text-white border-l-4 border-neon pl-4"
           >
             {category.title}
           </motion.h3>

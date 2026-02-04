@@ -11,7 +11,7 @@ export default function WhatsAppButton() {
       href={`https://wa.me/${whatsappNumber}?text=${message}`}
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-6 left-6 z-50 group"
+      className="fixed bottom-4 left-4 sm:bottom-6 sm:left-6 z-50 group"
       initial={{ scale: 0, rotate: -180 }}
       animate={{ 
         scale: 1, 

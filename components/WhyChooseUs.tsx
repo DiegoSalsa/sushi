@@ -36,7 +36,7 @@ export default function WhyChooseUs() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
             ¿Por Qué <span className="text-neon">Elegirnos?</span>
           </h2>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">
@@ -44,7 +44,7 @@ export default function WhyChooseUs() {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
           {features.map((feature, index) => (
             <motion.div
               key={index}

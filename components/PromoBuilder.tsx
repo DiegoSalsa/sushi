@@ -70,7 +70,7 @@ export default function PromoBuilder({ promo, isOpen, onClose, onAddToCart }: Pr
 
   return (
     <AnimatePresence>
-      <div className="fixed inset-0 z-[200] flex items-center justify-center p-4">
+      <div className="fixed inset-0 z-[200] flex items-center justify-center p-2 sm:p-4">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -86,13 +86,13 @@ export default function PromoBuilder({ promo, isOpen, onClose, onAddToCart }: Pr
           className="relative bg-zinc-900 rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-hidden border border-zinc-800"
         >
           {/* Header */}
-          <div className="sticky top-0 bg-gradient-to-r from-neon to-orange-600 p-6 z-10">
+          <div className="sticky top-0 bg-gradient-to-r from-neon to-orange-600 p-4 sm:p-6 z-10">
             <div className="flex items-start justify-between">
               <div>
-                <h2 className="text-2xl font-bold text-black">{promo.name}</h2>
-                <p className="text-black/80 text-sm mt-1">{promo.description}</p>
-                <div className="mt-3 bg-black/20 inline-block px-3 py-1 rounded-full">
-                  <span className="text-black font-bold">
+                <h2 className="text-xl sm:text-2xl font-bold text-black">{promo.name}</h2>
+                <p className="text-black/80 text-xs sm:text-sm mt-1">{promo.description}</p>
+                <div className="mt-2 sm:mt-3 bg-black/20 inline-block px-2 sm:px-3 py-1 rounded-full">
+                  <span className="text-black font-bold text-sm sm:text-base">
                     Selecciona {promo.rollsToSelect} rolls ({selectedRolls.length}/{promo.rollsToSelect})
                   </span>
                 </div>
