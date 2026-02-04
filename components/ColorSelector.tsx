@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { Palette, X } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function ColorSelector() {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,8 +17,28 @@ export default function ColorSelector() {
   ];
 
   const applyTheme = (primary: string, secondary: string) => {
-    document.documentElement.style.setProperty('--color-neon', primary);
-    document.documentElement.style.setProperty('--color-gold', secondary);
+    // Aplicar colores a todos los elementos que usan text-neon, bg-neon, border-neon
+    const style = document.createElement('style');
+    style.id = 'dynamic-theme';
+    
+    // Remover estilo anterior si existe
+    const oldStyle = document.getElementById('dynamic-theme');
+    if (oldStyle) oldStyle.remove();
+    
+    style.innerHTML = `
+      .text-neon { color: ${primary} !important; }
+      .bg-neon { background-color: ${primary} !important; }
+      .border-neon { border-color: ${primary} !important; }
+      .text-gold { color: ${secondary} !important; }
+      .bg-gold { background-color: ${secondary} !important; }
+      .fill-gold { fill: ${secondary} !important; }
+      .shadow-neon\\/50 { box-shadow: 0 0 50px ${primary}80 !important; }
+      .hover\\:bg-orange-600:hover { background-color: ${primary}dd !important; }
+      .from-neon { --tw-gradient-from: ${primary} !important; }
+      .to-orange-600 { --tw-gradient-to: ${primary}dd !important; }
+    `;
+    
+    document.head.appendChild(style);
     setIsOpen(false);
   };
 
