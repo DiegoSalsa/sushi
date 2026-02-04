@@ -201,13 +201,14 @@ export default function Home() {
 
           {/* Scroll Indicator */}
           <motion.div
-            className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
+            className="absolute bottom-10 left-1/2 -translate-x-1/2 z-30"
             animate={{ y: [0, 15, 0] }}
             transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
           >
             <motion.div
               animate={{ opacity: [0.5, 1, 0.5] }}
               transition={{ duration: 1.5, repeat: Infinity }}
+              className="flex justify-center items-center"
             >
               <ChevronDown className="w-8 h-8 text-neon drop-shadow-[0_0_10px_rgba(255,153,0,0.8)]" />
             </motion.div>
