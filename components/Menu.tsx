@@ -313,18 +313,24 @@ export default function Menu({ addToCart }: MenuProps) {
             {category.items.map((item: any, index: number) => (
               <motion.div
                 key={item.id}
-                initial={{ opacity: 0, y: 50, rotateX: -10 }}
-                whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+                initial={{ opacity: 0, y: 80, rotateX: -20, rotateY: -10 }}
+                whileInView={{ opacity: 1, y: 0, rotateX: 0, rotateY: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.5, type: "spring", stiffness: 100 }}
-                whileHover={{ 
-                  y: -10, 
-                  scale: 1.02,
-                  rotateY: 2,
-                  transition: { duration: 0.3 }
+                transition={{ 
+                  duration: 0.8, 
+                  type: "spring", 
+                  stiffness: 80,
+                  delay: index * 0.1 
                 }}
-                className="bg-zinc-900/50 rounded-2xl overflow-hidden border border-zinc-800 hover:border-neon/50 transition-all duration-300 card-glow hover:card-glow-hover relative group"
-                style={{ transformStyle: "preserve-3d" }}
+                whileHover={{ 
+                  y: -12, 
+                  scale: 1.03,
+                  rotateY: 5,
+                  rotateX: 5,
+                  transition: { duration: 0.4, type: "spring", stiffness: 200 }
+                }}
+                className="bg-zinc-900/50 backdrop-blur-sm rounded-2xl overflow-hidden border border-zinc-800 hover:border-neon/50 transition-all duration-300 card-glow hover:card-glow-hover relative group neumorphic"
+                style={{ transformStyle: "preserve-3d", perspective: "1000px" }}
               >
                 {/* Glow effect on hover */}
                 <motion.div

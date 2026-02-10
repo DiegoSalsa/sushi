@@ -17,6 +17,8 @@ import WhyChooseUs from "@/components/WhyChooseUs";
 import Stats from "@/components/Stats";
 import InfoSection from "@/components/InfoSection";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import PreparationTimeline from "@/components/PreparationTimeline";
+import WaveTransition from "@/components/WaveTransition";
 
 export interface CartItem {
   id: string;
@@ -87,23 +89,52 @@ export default function Home() {
 
       {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden max-w-full">
-        {/* Particles Background */}
+        {/* Animated Gradient Background */}
+        <div className="absolute inset-0 animated-gradient opacity-20" />
+
+        {/* Floating Ingredients (Parallax Layer 1 - slowest) */}
         <div className="absolute inset-0 z-0">
-          {[...Array(20)].map((_, i) => (
+          {['🍣', '🥢', '🍱', '🍙', '🦐', '🥑', '🌶️', '🍋'].map((emoji, i) => (
             <motion.div
-              key={i}
-              className="absolute w-2 h-2 bg-neon rounded-full opacity-20"
+              key={`ingredient-${i}`}
+              className="absolute text-4xl sm:text-5xl md:text-6xl opacity-10"
               style={{
                 left: `${Math.random() * 100}%`,
                 top: `${Math.random() * 100}%`,
               }}
               animate={{
-                y: [0, -30, 0],
-                opacity: [0.2, 0.5, 0.2],
-                scale: [1, 1.5, 1],
+                y: [0, -40, 0],
+                x: [0, Math.random() * 20 - 10, 0],
+                rotate: [0, Math.random() * 360, 0],
+                opacity: [0.1, 0.2, 0.1],
               }}
               transition={{
-                duration: 3 + Math.random() * 2,
+                duration: 8 + Math.random() * 4,
+                repeat: Infinity,
+                delay: Math.random() * 3,
+                ease: "easeInOut",
+              }}
+            />
+          ))}
+        </div>
+
+        {/* Particles Background (Parallax Layer 2 - medium speed) */}
+        <div className="absolute inset-0 z-[1]">
+          {[...Array(15)].map((_, i) => (
+            <motion.div
+              key={`particle-${i}`}
+              className="absolute w-2 h-2 bg-neon rounded-full opacity-30"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+              }}
+              animate={{
+                y: [0, -50, 0],
+                opacity: [0.3, 0.6, 0.3],
+                scale: [1, 1.8, 1],
+              }}
+              transition={{
+                duration: 4 + Math.random() * 2,
                 repeat: Infinity,
                 delay: Math.random() * 2,
               }}
@@ -111,18 +142,21 @@ export default function Home() {
           ))}
         </div>
 
-        {/* Background Image with Overlay */}
+        {/* Background Image with Parallax (Layer 3 - faster) */}
         <motion.div 
-          className="absolute inset-0 z-0"
-          initial={{ scale: 1.2 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 1.5, ease: "easeOut" }}
+          className="absolute inset-0 z-[2]"
+          style={{ y: 0 }}
+          animate={{ scale: [1.2, 1.15, 1.2] }}
+          transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
         >
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-background z-10" />
-          <img
+          <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-background z-10" />
+          <motion.img
             src="https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?q=80&w=2127&auto=format&fit=crop"
             alt="Sushi Background"
             className="w-full h-full object-cover"
+            style={{ y: 0 }}
+            animate={{ y: [-20, 0, -20] }}
+            transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
           />
         </motion.div>
 
@@ -201,22 +235,39 @@ export default function Home() {
         </div>
       </section>
 
+      <WaveTransition />
+
       {/* Menu Section */}
-      <section id="menu" className="py-16 px-4 overflow-x-hidden max-w-full">
+      <section id="menu" className="py-16 px-4 overflow-x-hidden max-w-full bg-zinc-950">
         <Menu addToCart={addToCart} />
       </section>
+
+      <WaveTransition flip />
+
+      {/* Preparation Timeline */}
+      <PreparationTimeline />
+
+      <WaveTransition />
 
       {/* How It Works */}
       <HowItWorks />
 
+      <WaveTransition flip />
+
       {/* Why Choose Us */}
       <WhyChooseUs />
+
+      <WaveTransition />
 
       {/* Stats */}
       <Stats />
 
+      <WaveTransition flip />
+
       {/* Info Section - Horarios, Cobertura, Pagos */}
       <InfoSection />
+
+      <WaveTransition />
 
       {/* FAQ */}
       <FAQ />
