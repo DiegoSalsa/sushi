@@ -77,7 +77,7 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen bg-background pt-20 overflow-x-hidden max-w-full">
+    <main className="min-h-screen bg-background pt-20">
       {/* Navbar */}
       <Navbar cartCount={cartItemsCount} onCartClick={() => setIsCartOpen(true)} />
       
@@ -238,7 +238,7 @@ export default function Home() {
       <WaveTransition />
 
       {/* Menu Section */}
-      <section id="menu" className="py-16 px-4 overflow-x-hidden max-w-full bg-zinc-950">
+      <section id="menu" className="py-16 px-4 bg-zinc-950">
         <Menu addToCart={addToCart} />
       </section>
 

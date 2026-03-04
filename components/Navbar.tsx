@@ -21,7 +21,7 @@ export default function Navbar({ cartCount, onCartClick }: NavbarProps) {
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className="fixed top-0 left-0 right-0 bg-black/95 backdrop-blur-md border-b border-zinc-800 z-[100] max-w-full overflow-x-hidden"
+      className="fixed top-0 left-0 right-0 bg-black/95 backdrop-blur-md border-b border-zinc-800 z-[100]"
     >
       <div className="max-w-7xl mx-auto px-4 py-4 w-full">
         <div className="flex items-center justify-between">
